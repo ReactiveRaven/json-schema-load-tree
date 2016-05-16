@@ -11,6 +11,8 @@ describe("schemaFetcher", function() {
     beforeEach(function() {
         container = new infusejs.Injector();
         fetchConnection = jasmine.createSpyObj("fetchConnection", [ "json" ]);
+        fetchConnection.ok = true;
+        fetchConnection.status = 200;
         fetchPromise = jasmine.createSpyObj("fetchPromise", [ "then", "catch" ]);
         fetchPromise.then.and.callFake(cb => { cb(fetchConnection); return fetchPromise; });
         fetch = jasmine.createSpy("fetch").and.returnValue(fetchPromise);
@@ -59,6 +61,15 @@ describe("schemaFetcher", function() {
             instance("testurl");
 
             expect(fetchConnection.json).toHaveBeenCalled();
+        });
+
+        it("should reject the promise chain on non-200 status code", function() {
+            fetchConnection.ok = false;
+            fetchConnection.status = 404;
+
+            expect(function() {
+                instance("testurl");
+            }).toThrow(new Error("Failed to fetch 'testurl' with status '404'"));
         });
     });
 
