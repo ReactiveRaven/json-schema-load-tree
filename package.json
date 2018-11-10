@@ -37,7 +37,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "cz-conventional-changelog": "^2.0.0",
     "infuse.js": "github:alliterativeanimals/infuse.js#master",
-    "jasmine": "^2.4.1",
+    "jasmine": "^3.3.0",
     "semantic-release": "^6.3.6",
     "watch": "^1.0.2"
   },
