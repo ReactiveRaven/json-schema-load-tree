@@ -38,7 +38,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "infuse.js": "github:alliterativeanimals/infuse.js#master",
     "jasmine": "^3.3.0",
-    "semantic-release": "^15.10.8",
+    "semantic-release": "^16.0.0",
     "watch": "^1.0.2"
   },
   "config": {
